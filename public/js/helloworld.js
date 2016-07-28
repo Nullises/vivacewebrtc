@@ -1,7 +1,7 @@
-// Initialize an OpenTok Session object
+// Inicializar objeto session
 var session = TB.initSession(sessionId);
 
-// Initialize a Publisher, and place it into the element with id="publisher"
+// Inicializar objeto Publisher, y colocarlo en la vista con el id="publisher"
 var publisher = TB.initPublisher(apiKey, 'publisher');
 
 // Attach event handlers

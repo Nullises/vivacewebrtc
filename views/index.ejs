@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8" />
     <title>OpenTok Hello World</title>
@@ -8,18 +8,11 @@
         var apiKey = '<%= apiKey %>';
         var sessionId = '<%= sessionId %>';
         var token = '<%= token %>';
-
-        var publisherProperties = {resolution: '1280x720'};
-        var publisher = OT.initPublisher(targetElement, publisherProperties);
-        publisher.on('streamCreated', function(event) {
-         console.log('Stream resolution: ' + event.stream.videoDimensions.width + 'x' + event.stream.videoDimensions.height);
-        });
-
     </script>
     <script src="/js/helloworld.js"></script>
+    <script src="/js/resolution.js"></script>
 </head>
 <body>
-    <h2>Hello, World!</h2>
 
     <div id="publisher"></div>
 

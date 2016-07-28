@@ -1,37 +1,39 @@
-// Dependencies
+// Dependencias
 var express = require('express'),
     OpenTok = require('opentok');
 var server_port = process.env.PORT || 3000;
 
 
-// Verify that the API Key and API Secret are defined
+// Definir API_KEY y API_SECRET
 var apiKey = "45625752",
     apiSecret = "534d2e4da9064fd573588361661304842dcd93f5";
 if (!apiKey || !apiSecret) {
-  console.log('You must specify API_KEY and API_SECRET environment variables');
+  console.log('Debes especificar apiKey y apiSecret como variables de entorno');
   process.exit(1);
 }
 
-// Initialize the express app
+// Inicializar Express
 var app = express();
 app.use(express.static(__dirname + '/public'));
 
-// Initialize OpenTok
+// Inicializar OpenTok
 var opentok = new OpenTok(apiKey, apiSecret);
 
-// Create a session and store it in the express app
+// Crear una Session y almacenarla en Express
 opentok.createSession(function(err, session) {
   if (err) throw err;
   app.set('sessionId', session.sessionId);
-  // We will wait on starting the app until this is done
+  // Esperar que la Session sea creada para inicializar la aplicación
   init();
 });
 
+//Obtener la Session (sessionId)
 app.get('/', function(req, res) {
   var sessionId = app.get('sessionId'),
-      // generate a fresh token for this client
+      // Generar un token nuevo para el cliente
       token = opentok.generateToken(sessionId);
 
+  //Renderizar las variables en las vistas
   res.render('index.ejs', {
     apiKey: apiKey,
     sessionId: sessionId,
@@ -40,9 +42,9 @@ app.get('/', function(req, res) {
 });
 
 
-// Start the express app
+// Inicializar la aplicación Express
 function init() {
   app.listen(server_port, function() {
-    console.log('You\'re app is now ready at localhost:' + server_port);
+    console.log('La aplicación está corriendo en localhost:' + server_port);
   });
 }
