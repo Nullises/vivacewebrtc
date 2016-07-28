@@ -1,23 +1,16 @@
 // Dependencias
-var express = require('express'),
-    OpenTok = require('opentok');
+var express = require('express');
+var opentok = require('./ot').opentok;
+var apiKey = require('./ot').apiKey;
+var apiSecret = require('./ot').apiSecret;
 var server_port = process.env.PORT || 3000;
 
 
-// Definir API_KEY y API_SECRET
-var apiKey = "45625752",
-    apiSecret = "534d2e4da9064fd573588361661304842dcd93f5";
-if (!apiKey || !apiSecret) {
-  console.log('Debes especificar apiKey y apiSecret como variables de entorno');
-  process.exit(1);
-}
 
 // Inicializar Express
 var app = express();
 app.use(express.static(__dirname + '/public'));
 
-// Inicializar OpenTok
-var opentok = new OpenTok(apiKey, apiSecret);
 
 // Crear una Session y almacenarla en Express
 opentok.createSession(function(err, session) {
