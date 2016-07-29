@@ -1,43 +1,36 @@
 // Dependencias
 var express = require('express');
-var opentok = require('./ot').opentok;
-var apiKey = require('./ot').apiKey;
-var apiSecret = require('./ot').apiSecret;
 var server_port = process.env.PORT || 3000;
+var apiKey = require('./ot').apiKey; //Obtiene apiKey por defecto
+var credentials = require('./credentials').credentials(fun); //Obtiene sessionId y Token
 
+//Función contenedora de la aplicación
+function fun(obj) {
 
-
-// Inicializar Express
+//Definir aplicación
 var app = express();
+
+//Utilizar carpeta estática "public"
 app.use(express.static(__dirname + '/public'));
 
+//Inicializar la aplicación
+init();
 
-// Crear una Session y almacenarla en Express
-opentok.createSession(function(err, session) {
-  if (err) throw err;
-  app.set('sessionId', session.sessionId);
-  // Esperar que la Session sea creada para inicializar la aplicación
-  init();
-});
-
-//Obtener la Session (sessionId)
+//Routing
 app.get('/', function(req, res) {
-  var sessionId = app.get('sessionId'),
-      // Generar un token nuevo para el cliente
-      token = opentok.generateToken(sessionId);
-
   //Renderizar las variables en las vistas
   res.render('index.ejs', {
     apiKey: apiKey,
-    sessionId: sessionId,
-    token: token
+    sessionId: obj.sessionId,
+    token: obj.tokenId
   });
 });
 
-
-// Inicializar la aplicación Express
+//Definir Inicialización
 function init() {
   app.listen(server_port, function() {
     console.log('La aplicación está corriendo en localhost:' + server_port);
   });
+}
+
 }
