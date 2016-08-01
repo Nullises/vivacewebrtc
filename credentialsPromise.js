@@ -2,6 +2,7 @@
 var opentok = require('./ot').opentok;
 var apiKey = require('./ot').apiKey;
 var apiSecret = require('./ot').apiSecret;
+var RSVP = require('rsvp');
 
 //Definir variables
 var sessionId;
@@ -10,8 +11,8 @@ var token;
 //Definir función de crear nueva sesión
 var newSession = function(){
   // *** Regresar una promise
-  return new Promise(function(resolve, reject) {
-    opentok.createSession({mediaMode:"relayed"}, function(err, session){
+  return new RSVP.Promise(function(resolve, reject) {
+    opentok.createSession({mediaMode:"routed"}, function(err, session){
       // *** Reject en error
       if (err) {
           reject(err);

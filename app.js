@@ -2,8 +2,16 @@
 var express = require('express');
 var server_port = process.env.PORT || 3000;
 var apiKey = require('./ot').apiKey; //Obtiene apiKey por defecto
-//var credentials = require('./credentials').credentials(fun); //Obtiene la función con sessionId y token
+var apiSecret = require('./ot').apiSecret;
+
+var credentials = require('./credentials').credentials(fun); //Obtiene la función con sessionId y token
+
+//Con Promise (Solo publica no subscribe)
+
+/*
+
 var credentialsPromise = require('./credentialsPromise').credentialsPromise; //Obtiene la promesa con sessionId y token
+
 
 //Definir aplicación
 var app = express();
@@ -16,8 +24,8 @@ init();
 
 
 app.get('/', function(req, res){
-  credentialsPromise().then(function(result){
-    var obj = result;
+  credentialsPromise().then(function(resolve){
+    var obj = resolve;
 
     res.render('index.ejs', {
       apiKey: apiKey,
@@ -25,7 +33,7 @@ app.get('/', function(req, res){
       token: obj.tokenId
     });
 
-  }, function(err){
+  }, function(reject){
     console.log("no se pudo traer");
   });
 });
@@ -38,8 +46,14 @@ function init() {
 }
 
 
+*/
+
+//Con Callback (publica y subscribe correctamente)
+
+
+
 //Función contenedora de la aplicación
-/*function fun(obj) {
+function fun(obj) {
 
 //Definir aplicación
 var app = express();
@@ -67,4 +81,4 @@ function init() {
   });
 }
 
-}*/
+}
