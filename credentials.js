@@ -10,10 +10,10 @@ var token;
 //Definir función de crear nueva sesión
 var newSession = function(callbackS){
   //Crear nueva sesión
-  opentok.createSession(function(err, session){
+  opentok.createSession({mediaMode:"relayed"}, function(err, session){
     if(err) throw err;
     else {
-      //Objeto sesión
+      //Definir Objeto sesión
       var objSession = {};
       //Obtener sessionId
       objSession.sessionId = session.sessionId;
@@ -29,7 +29,7 @@ var newTok = function(obj, fn){
     token = opentok.generateToken(obj.sessionId);
     //Almacenar objeto (obj.tokenId) en variable token
     obj.tokenId = token;
-    //Definir segundo parámetro
+    //Definir "obj"
     fn(obj);
 }
 

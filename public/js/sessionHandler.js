@@ -22,8 +22,13 @@ session.on({
     subContainer.id = 'stream-' + event.stream.streamId;
     document.getElementById('subscribers').appendChild(subContainer);
 
+    //Opciones para el elemento subscriber
+    var optionsSubscriber = {width: 640, height: 480, insertMode: 'append', preferredResolution: {width: 1024, height: 768}};
+
     // Suscribir el stream que causó este evento, ponerlo dentro del contenedor que hemos creado
-    session.subscribe(event.stream, subContainer);
+    session.subscribe(event.stream, subContainer, optionsSubscriber);
+
+    //
   }
 
 });

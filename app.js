@@ -2,7 +2,7 @@
 var express = require('express');
 var server_port = process.env.PORT || 3000;
 var apiKey = require('./ot').apiKey; //Obtiene apiKey por defecto
-var credentials = require('./credentials').credentials(fun); //Obtiene sessionId y Token
+var credentials = require('./credentials').credentials(fun); //Obtiene la dunción de sessionId y Token
 
 //Función contenedora de la aplicación
 function fun(obj) {
