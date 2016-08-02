@@ -1,6 +1,6 @@
 //Dependencias
 var opentok = require('./ot').opentok;
-var apiKey = require('./ot').apiKey;
+//var apiKey = require('./ot').apiKey;
 var apiSecret = require('./ot').apiSecret;
 
 //Definir variables

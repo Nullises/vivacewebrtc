@@ -9,10 +9,15 @@
         var sessionId = '<%= sessionId %>';
         var token = '<%= token %>';
     </script>
-    <script src="/js/sessionHandler.js"></script>
-    <script src="/js/resolution.js"></script>
+
+    <script src="/js/sessionHandling.js"></script>
+
 </head>
 <body>
+
+    <div>
+      <button type="button" id="disconnectBtn" onclick="disconnect()">Desconectar</button>
+    </div>
 
     <div id="publisher"></div>
 
