@@ -47,6 +47,9 @@ var app = express();
 //Utilizar carpeta estática "public"
 app.use(express.static(__dirname + '/public'));
 
+//Utilizar carpeta estática node_modules
+app.use(express.static(__dirname + '/node_modules'));
+
 //Inicializar la aplicación
 init();
 

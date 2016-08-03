@@ -3,6 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <title>OpenTok Hello World</title>
+    <link rel="stylesheet" href="angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
     <script src="//static.opentok.com/webrtc/v2.2/js/TB.min.js"></script>
     <script type="text/javascript">
         var apiKey = '<%= apiKey %>';
@@ -10,17 +13,55 @@
         var token = '<%= token %>';
     </script>
 
-    <script src="/js/sessionHandling.js"></script>
+    <script src="/js/sessionHandler.js"></script>
 
 </head>
-<body>
+<body ng-app="mainView" layout="column">
 
-    <div>
-      <button type="button" id="disconnectBtn" onclick="disconnect()">Desconectar</button>
+    <md-toolbar layout-align="center center">
+      <h3>VIVACE WEBRTC (TEST)</h3>
+    </md-toolbar>
+
+    <!--CONTENEDOR PRINCIPAL-->
+    <div class="container" layout="row" flex>
+
+
+      <!--SIDENAV-->
+      <md-sidenav md-is-locked-open="true" class="md-whiteframe-10dp">
+        <md-list>
+          <md-list-item>
+            <md-button class="md-primary">
+              <md-icon><i class="fa fa-user-md" aria-hidden="true" style="font-size:18pt"></i></md-icon>
+              RUBEN DUÍN
+            </md-button>
+          </md-list-item>
+          <md-list-item>
+            <md-button class="md-primary">
+              <md-icon><i class="fa fa-user" aria-hidden="true" style="font-size:18pt"></i></md-icon>
+              ULISES VARGAS
+            </md-button>
+          </md-list-item>
+        </md-list>
+      </md-sidenav>
+
+      <md-content id="content" flex>
+        <!--OPENTOK-->
+        <div layout="column" layout-gt-xs="row">
+          <md-card flex layout-align="center center">
+            <div id="publisher"></div>
+          </md-card>
+          <md-card flex flex-gt-xs="30" layout-align="center center">
+            <div id="subscribers"></div>
+          </md-card>
+        </div>
+      </md-content>
+
     </div>
 
-    <div id="publisher"></div>
-
-    <div id="subscribers"></div>
+    <script src="angular/angular.min.js"></script>
+    <script src="angular-animate/angular-animate.min.js"></script>
+    <script src="angular-aria/angular-aria.min.js"></script>
+    <script src="angular-material/angular-material.min.js"></script>
+    <script src="/js/angular-scripts/module.js"></script>
 </body>
 </html>
