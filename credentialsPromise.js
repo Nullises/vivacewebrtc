@@ -39,4 +39,4 @@ var newTok = function(obj, fn){
 
 
 //Exportar la nueva sesión con sessionId y token
-module.exports = newSession;
+module.exports.newSession = newSession;
