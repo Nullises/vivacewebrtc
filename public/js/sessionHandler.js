@@ -28,7 +28,6 @@ session.on({
     // Suscribir el stream que causó este evento, ponerlo dentro del contenedor que hemos creado
     session.subscribe(event.stream, subContainer, optionsSubscriber);
 
-    //
   }
 
 });
