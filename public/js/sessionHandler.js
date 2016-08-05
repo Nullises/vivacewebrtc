@@ -23,7 +23,8 @@ session.on({
     document.getElementById('subscribers').appendChild(subContainer);
 
     //Opciones para el elemento subscriber
-    var optionsSubscriber = {width: 480, height: 320, insertMode: 'append', preferredResolution: {width: 1024, height: 768}, preferredFrameRate: 30};
+    var optionsSubscriber = {width: 480, height: 320, insertMode: 'append',
+    preferredResolution: {width: 1024, height: 768}, preferredFrameRate: 30};
 
     // Suscribir el stream que causó este evento, ponerlo dentro del contenedor que hemos creado
     session.subscribe(event.stream, subContainer, optionsSubscriber);
