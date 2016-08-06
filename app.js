@@ -23,7 +23,7 @@ app.get('/', function(req, res){
     //fullfilled
     var obj = req;
     //Renderizar en la vista
-    res.render('ejemplo.ejs', {
+    res.render('index.ejs', {
       apiKey: obj.apiKey,
       sessionId: obj.sessionId,
       token: obj.tokenId
